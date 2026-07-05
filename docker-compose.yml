@@ -1,0 +1,21 @@
+name: parmati-me
+services:
+  site:
+    # Prebuilt image; swap for `build: .` to build from source.
+    image: parmati/parmati-me:latest
+    build: .
+    container_name: parmati-me
+    ports:
+      - "5580:80"
+    volumes:
+      # Live content: drop a new resume.pdf / projects.json / photo into ./content
+      # on the host and refresh — no rebuild, no restart. Files here override the
+      # defaults baked into the image.
+      - ./content:/content:ro
+    restart: unless-stopped
+    healthcheck:
+      # nginx:alpine ships wget (busybox), not curl.
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

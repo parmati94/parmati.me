@@ -1,0 +1,6 @@
+node_modules/
+dist/
+
+# Live content served via the /content volume mount — resume, photos, projects.json
+# edits made in place on the server. Baked defaults live in public/content/.
+content/

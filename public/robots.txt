@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parmati.me/sitemap.xml

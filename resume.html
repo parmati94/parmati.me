@@ -1,0 +1,30 @@
+{{> head }}
+{{> header }}
+
+<main class="container mx-auto w-full max-w-5xl flex-1 px-4 py-10">
+  <div class="mb-6 flex flex-wrap items-center gap-4">
+    <h1 class="text-3xl font-bold tracking-tight">Resume</h1>
+    <a
+      href="/content/resume.pdf"
+      download="paul-resume.pdf"
+      class="ml-auto rounded-lg bg-accent px-4 py-2 font-mono text-sm font-medium text-bg transition-opacity hover:opacity-90"
+      >download pdf</a
+    >
+  </div>
+
+  <!-- Inline viewer; most mobile browsers won't embed PDFs, hence the fallback. -->
+  <object
+    data="/content/resume.pdf"
+    type="application/pdf"
+    class="h-[75vh] w-full rounded-xl border border-line bg-surface"
+  >
+    <div class="grid h-full place-items-center p-8 text-center text-muted">
+      <p>
+        Your browser doesn't display PDFs inline —
+        <a href="/content/resume.pdf" class="text-accent underline">open the resume directly</a>.
+      </p>
+    </div>
+  </object>
+</main>
+
+{{> footer }}

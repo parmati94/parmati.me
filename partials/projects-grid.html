@@ -1,0 +1,106 @@
+<section id="projects" class="scroll-mt-20 pb-20">
+  <div class="mb-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+    <h2 class="text-2xl font-semibold tracking-tight">Projects</h2>
+    <p class="font-mono text-xs text-muted" x-show="projects.length" x-cloak>
+      <span x-text="projects.length"></span> services &middot; live status from GitHub
+    </p>
+  </div>
+
+  <noscript>
+    <p class="text-muted">
+      This grid renders with JavaScript — everything lives at
+      <a class="text-accent underline" href="https://github.com/parmati94"
+        >github.com/parmati94</a
+      >.
+    </p>
+  </noscript>
+
+  <p x-show="projectsError" x-cloak class="text-muted">
+    Couldn't load the project list. It's all on
+    <a class="text-accent underline" href="https://github.com/parmati94"
+      >github.com/parmati94</a
+    >.
+  </p>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <template x-for="(p, i) in projects" :key="p.id">
+      <article
+        class="svc-card flex flex-col gap-3 rounded-xl border border-line bg-surface p-5 hover:border-accent/50"
+        :class="gridOnline && 'online'"
+        :style="`transition-delay: ${gridOnline ? i * 70 : 0}ms`"
+      >
+        <div class="flex items-center gap-2.5">
+          <span
+            class="led"
+            :class="isRunning(p) ? 'led-on' : 'led-off'"
+            :title="isRunning(p) ? 'Active — pushed within 90 days' : 'Idle'"
+            aria-hidden="true"
+          ></span>
+          <h3 class="font-semibold leading-tight">
+            <a
+              :href="repoUrl(p)"
+              target="_blank"
+              rel="noopener"
+              class="transition-colors hover:text-accent"
+              x-text="p.name"
+            ></a>
+          </h3>
+          <span
+            class="ml-auto font-mono text-[11px] text-muted"
+            x-text="isRunning(p) ? 'running' : 'idle'"
+          ></span>
+        </div>
+
+        <template x-if="p.image">
+          <img
+            :src="p.image"
+            :alt="`${p.name} screenshot`"
+            loading="lazy"
+            class="rounded-lg border border-line"
+          />
+        </template>
+
+        <p class="text-sm leading-relaxed text-muted" x-text="p.description"></p>
+
+        <!-- Live service metadata (GitHub API, cached; hidden when unavailable). -->
+        <p class="font-mono text-xs text-muted" x-show="ghMeta(p)" x-cloak>
+          <span class="text-accent">&#9733;</span>
+          <span x-text="ghMeta(p)?.stars"></span>
+          <span> &middot; </span>
+          <span x-text="pushedLabel(p)"></span>
+          <template x-if="ghMeta(p)?.language">
+            <span> &middot; <span x-text="ghMeta(p)?.language"></span></span>
+          </template>
+        </p>
+
+        <div class="mt-auto flex flex-wrap gap-1.5 pt-1">
+          <template x-for="tag in p.tags" :key="tag">
+            <span
+              class="rounded-md bg-raised px-2 py-0.5 font-mono text-[11px] text-muted"
+              x-text="tag"
+            ></span>
+          </template>
+        </div>
+
+        <div class="flex gap-4 border-t border-line pt-3 font-mono text-xs">
+          <a
+            :href="repoUrl(p)"
+            target="_blank"
+            rel="noopener"
+            class="text-accent transition-opacity hover:opacity-80"
+            >repo&nbsp;&#8599;</a
+          >
+          <template x-if="p.demoUrl">
+            <a
+              :href="p.demoUrl"
+              target="_blank"
+              rel="noopener"
+              class="text-accent transition-opacity hover:opacity-80"
+              >demo&nbsp;&#8599;</a
+            >
+          </template>
+        </div>
+      </article>
+    </template>
+  </div>
+</section>

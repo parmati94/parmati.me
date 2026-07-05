@@ -1,0 +1,54 @@
+<section class="pb-16 pt-14 sm:pb-20 sm:pt-20">
+  <div class="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
+    <!-- Photo drops in at content/img/photo.jpg; monogram renders until it loads. -->
+    <div class="relative h-28 w-28 shrink-0 sm:h-32 sm:w-32">
+      <div
+        x-show="!photoOk"
+        class="grid h-full w-full place-items-center rounded-2xl border border-line bg-surface font-mono text-4xl font-medium text-accent"
+        aria-hidden="true"
+      >
+        P
+      </div>
+      <img
+        src="/content/img/photo.jpg"
+        alt="Photo of Paul"
+        class="h-full w-full rounded-2xl border border-line object-cover"
+        :class="photoOk ? '' : 'hidden'"
+        @load="photoOk = true"
+      />
+    </div>
+    <div>
+      <p class="mb-2 font-mono text-xs uppercase tracking-widest text-muted">
+        paul &middot; <span class="text-accent">@parmati94</span>
+      </p>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+        I build self-hosted,<br class="hidden sm:block" />
+        containerized tools.
+      </h1>
+      <p class="mt-4 max-w-xl text-muted">
+        Playlist AI, game-server dashboards, save-file viewers, notification relays — small,
+        useful services that run on my own hardware — nearly everything below ships as a
+        Docker container.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-3 font-mono text-sm">
+        <a
+          href="/resume"
+          class="rounded-lg bg-accent px-4 py-2 font-medium text-bg transition-opacity hover:opacity-90"
+          >resume</a
+        >
+        <a
+          href="https://github.com/parmati94"
+          target="_blank"
+          rel="noopener"
+          class="rounded-lg border border-line px-4 py-2 text-ink transition-colors hover:border-accent/60"
+          >github&nbsp;&#8599;</a
+        >
+        <a
+          href="mailto:parmati94@gmail.com"
+          class="rounded-lg border border-line px-4 py-2 text-ink transition-colors hover:border-accent/60"
+          >email</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
