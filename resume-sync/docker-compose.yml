@@ -1,4 +1,5 @@
-# Reference compose for the resume-sync stack (deployed in Portainer).
+# Reference for the resume-sync service — deployed as part of the parmati-me
+# Portainer stack (single stack runs both the site and this sync service).
 # Prereqs (one-time, already done on the homelab):
 #   - read-only deploy key at ~/.config/resume-sync/ssh/{id_ed25519,known_hosts}
 #     registered on github.com/parmati94/resume
