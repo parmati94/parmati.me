@@ -7,3 +7,6 @@ content/
 
 # Working docs
 PLANNING.md
+
+# Python
+__pycache__/
