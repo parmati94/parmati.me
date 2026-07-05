@@ -14,8 +14,9 @@ services:
       - ./content:/content:ro
     restart: unless-stopped
     healthcheck:
-      # nginx:alpine ships wget (busybox), not curl.
-      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      # nginx:alpine ships wget (busybox), not curl; 127.0.0.1 avoids busybox
+      # preferring ::1 for localhost.
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
       interval: 30s
       timeout: 5s
       retries: 3
