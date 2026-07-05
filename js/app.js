@@ -2,6 +2,7 @@ import Alpine from 'alpinejs';
 import '../css/main.css';
 import { github } from './github.js';
 import { projects } from './projects.js';
+import { resume } from './resume.js';
 import { theme } from './theme.js';
 
 document.addEventListener('alpine:init', () => {
@@ -10,6 +11,7 @@ document.addEventListener('alpine:init', () => {
     ...theme(),
     ...projects(),
     ...github(),
+    ...resume(),
 
     photoOk: false, // flips true when /content/img/photo.jpg loads; monogram shows otherwise
     gridOnline: false, // set on first scroll into view → cards stagger in
@@ -22,6 +24,9 @@ document.addEventListener('alpine:init', () => {
         await this.loadProjects();
         this.loadGithubMeta();
         this._watchGrid();
+      }
+      if (document.getElementById('resume-root')) {
+        await this.loadResume();
       }
     },
 

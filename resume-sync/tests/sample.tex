@@ -1,0 +1,39 @@
+% Sanitized golden-test fixture — exercises every structure the parser must handle.
+\documentclass[]{mcdowellcv}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\name{Jane Q. Sample}
+\address{jane@example.com \linebreak (555) 010-0000 \linebreak Springfield, VA}
+\contacts{\href{https://github.com/jsample}{github.com/jsample} \linebreak \href{https://example.com}{https://example.com}}
+
+\begin{document}
+	\makeheader
+
+    \begin{cvsection}{Technical Skills}
+        \begin{cvsubsection}{}{}{}
+            \begin{itemize}
+                \item \textbf{Languages:} Python, C\#, C
+                \item \textbf{Tools \& Platforms:} Docker, Kubernetes % inline comment
+            \end{itemize}
+        \end{cvsubsection}
+    \end{cvsection}
+
+	\begin{cvsection}{Employment}
+        \begin{cvsubsection}{Software Engineer}{Acme Corp}{May 2022 -- Present}
+			\begin{itemize}
+                \item Built a service handling 100\% of uploads --- with \textit{zero} downtime.
+				\item Maintained \href{https://acme.example}{internal tools} used by 60,000 users.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+	\begin{cvsection}{Projects}
+		\begin{cvsubsection}{}{}{}
+			\begin{itemize}
+                \item \textbf{Widget}: A thing~that does stuff.
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+\end{document}

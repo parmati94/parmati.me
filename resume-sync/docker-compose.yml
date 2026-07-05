@@ -1,0 +1,18 @@
+# Reference compose for the resume-sync stack (deployed in Portainer).
+# Prereqs (one-time, already done on the homelab):
+#   - read-only deploy key at ~/.config/resume-sync/ssh/{id_ed25519,known_hosts}
+#     registered on github.com/parmati94/resume
+#   - image built locally: docker build -t parmati/resume-sync:latest .
+name: resume-sync
+services:
+  resume-sync:
+    image: parmati/resume-sync:latest
+    container_name: resume-sync
+    environment:
+      - REPO_URL=git@github.com:parmati94/resume.git
+      - POLL_SECONDS=60
+    volumes:
+      - /home/paul/.config/resume-sync:/state
+      # Publishes resume.pdf + resume.json into the site's content volume.
+      - /home/paul/.config/parmati-me:/out
+    restart: unless-stopped

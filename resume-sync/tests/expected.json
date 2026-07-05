@@ -1,0 +1,53 @@
+{
+  "name": "Jane Q. Sample",
+  "contacts": [
+    "jane@example.com",
+    "(555) 010-0000",
+    "Springfield, VA",
+    "<a href=\"https://github.com/jsample\">github.com/jsample</a>",
+    "<a href=\"https://example.com\">https://example.com</a>"
+  ],
+  "sections": [
+    {
+      "title": "Technical Skills",
+      "entries": [
+        {
+          "left": "",
+          "center": "",
+          "right": "",
+          "bullets": [
+            "<b>Languages:</b> Python, C#, C",
+            "<b>Tools &amp; Platforms:</b> Docker, Kubernetes"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Employment",
+      "entries": [
+        {
+          "left": "Software Engineer",
+          "center": "Acme Corp",
+          "right": "May 2022 – Present",
+          "bullets": [
+            "Built a service handling 100% of uploads — with <i>zero</i> downtime.",
+            "Maintained <a href=\"https://acme.example\">internal tools</a> used by 60,000 users."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "entries": [
+        {
+          "left": "",
+          "center": "",
+          "right": "",
+          "bullets": [
+            "<b>Widget</b>: A thing that does stuff."
+          ]
+        }
+      ]
+    }
+  ]
+}
